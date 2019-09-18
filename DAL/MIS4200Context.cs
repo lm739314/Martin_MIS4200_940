@@ -12,10 +12,5 @@ namespace Martin_MIS4200_940.DAL
 {
     public class MIS4200Context : DbContext
     {
-        public MIS4200Context() : base("name=DefaultConnection") //new method that does not have a return type CONSTRUCTOR. this does set up stuff for us
-
-        {
-
-        }
     }
 }

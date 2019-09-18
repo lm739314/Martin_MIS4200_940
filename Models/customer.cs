@@ -17,6 +17,14 @@ namespace Martin_MIS4200_940.Models
         public string email { get; set; }
         public string phone { get; set; }
         //we created this one below after we made the order class
+
+        public string fullName { get
+            {
+                return lastName + ", " + firstName;
+            }
+        }
+        //we dont have any need to see the customer ID, we wont recognigze it. we would like to see the name
+        //read only property, we dont need set. 
         public ICollection<order> orders { get; set; }
         //all orders for customers in a collection so we can loop over
         //when we look at a customer, we will be able to view all the orders for a specific customer
