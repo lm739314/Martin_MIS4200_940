@@ -12,5 +12,16 @@ namespace Martin_MIS4200_940.DAL
 {
     public class MIS4200Context : DbContext
     {
+        public MIS4200Context() : base("name=DefaultConnection")
+        {
+
+        }
+
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<Student> Students { get; set; }
+        public DbSet<Grade> Grades { get; set; }
+        public DbSet<CourseDetail> CourseDetails { get; set;}
+
     }
+
 }
