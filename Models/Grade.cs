@@ -11,9 +11,13 @@ namespace Martin_MIS4200_940.Models
         public string letterGrade { get; set; }
 
         public int studentID { get; set; }
-        
 
-        public ICollection<CourseDetail> CourseDetail { get; set; }
+        public int courseDetailID { get; set; }
+        
+        public virtual Student Student { get; set; }
+        public virtual CourseDetail CourseDetail { get; set; }
+
+        
 
     }
 }

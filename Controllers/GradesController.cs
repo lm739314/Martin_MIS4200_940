@@ -18,7 +18,8 @@ namespace Martin_MIS4200_940.Controllers
         // GET: Grades
         public ActionResult Index()
         {
-            return View(db.Grades.ToList());
+            var grades = db.Grades.Include(g => g.CourseDetail).Include(g => g.Student);
+            return View(grades.ToList());
         }
 
         // GET: Grades/Details/5
@@ -39,6 +40,8 @@ namespace Martin_MIS4200_940.Controllers
         // GET: Grades/Create
         public ActionResult Create()
         {
+            ViewBag.courseDetailID = new SelectList(db.CourseDetails, "courseDetailID", "description");
+            ViewBag.studentID = new SelectList(db.Students, "studentID", "lastName");
             return View();
         }
 
@@ -47,7 +50,7 @@ namespace Martin_MIS4200_940.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "gradeID,letterGrade")] Grade grade)
+        public ActionResult Create([Bind(Include = "gradeID,letterGrade,studentID,courseDetailID")] Grade grade)
         {
             if (ModelState.IsValid)
             {
@@ -56,6 +59,8 @@ namespace Martin_MIS4200_940.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.courseDetailID = new SelectList(db.CourseDetails, "courseDetailID", "description", grade.courseDetailID);
+            ViewBag.studentID = new SelectList(db.Students, "studentID", "lastName", grade.studentID);
             return View(grade);
         }
 
@@ -71,6 +76,8 @@ namespace Martin_MIS4200_940.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.courseDetailID = new SelectList(db.CourseDetails, "courseDetailID", "description", grade.courseDetailID);
+            ViewBag.studentID = new SelectList(db.Students, "studentID", "lastName", grade.studentID);
             return View(grade);
         }
 
@@ -79,7 +86,7 @@ namespace Martin_MIS4200_940.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "gradeID,letterGrade")] Grade grade)
+        public ActionResult Edit([Bind(Include = "gradeID,letterGrade,studentID,courseDetailID")] Grade grade)
         {
             if (ModelState.IsValid)
             {
@@ -87,6 +94,8 @@ namespace Martin_MIS4200_940.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.courseDetailID = new SelectList(db.CourseDetails, "courseDetailID", "description", grade.courseDetailID);
+            ViewBag.studentID = new SelectList(db.Students, "studentID", "lastName", grade.studentID);
             return View(grade);
         }
 

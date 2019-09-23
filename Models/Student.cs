@@ -28,7 +28,7 @@ namespace Martin_MIS4200_940.Models
         }
         //we dont have any need to see the pet ID, we wont recognigze it. we would like to see the name
         //read only property, we dont need set. 
-        public ICollection<Course> Course { get; set; }
+        public ICollection<Grade> Grades { get; set; }
         //all appointments for pet in a collection so we can loop over
         //when we look at a pet, we will be able to view all the orders for a specific customer
     }
