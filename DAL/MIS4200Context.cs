@@ -15,13 +15,14 @@ namespace Martin_MIS4200_940.DAL
     {
         public MIS4200Context() : base("name=DefaultConnection")
         {
-
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<MIS4200Context,Martin_MIS4200_940.Migrations.MISContext.Configuration>("DefaultConnection"));
         }
 
         public DbSet<Course> Courses { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<Grade> Grades { get; set; }
         public DbSet<CourseDetail> CourseDetails { get; set;}
+       
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
