@@ -4,7 +4,7 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2>Create a Student Grade</h2>
 
 
 @using (Html.BeginForm()) 
@@ -24,15 +24,15 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.studentID, "studentID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.studentID, "Student Name", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("studentID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("studentId", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.studentID, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.courseDetailID, "courseDetailID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.courseDetailID, "Course Detail", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("courseDetailID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.courseDetailID, "", new { @class = "text-danger" })

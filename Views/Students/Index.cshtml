@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<Martin_MIS4200_940.Models.Student>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Student List";
 }
 
-<h2>Index</h2>
+<h2>Student List</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -12,11 +12,9 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.lastName)
+            @Html.DisplayNameFor(model => model.fullName)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.firstName)
-        </th>
+        
         <th>
             @Html.DisplayNameFor(model => model.email)
         </th>
@@ -29,11 +27,9 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.lastName)
+            @Html.DisplayFor(modelItem => item.fullName)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.firstName)
-        </td>
+        
         <td>
             @Html.DisplayFor(modelItem => item.email)
         </td>

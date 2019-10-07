@@ -18,8 +18,7 @@ namespace Martin_MIS4200_940.Controllers
         // GET: Courses
         public ActionResult Index()
         {
-            var courses = db.Courses.Include(c => c.Student);
-            return View(courses.ToList());
+            return View(db.Courses.ToList());
         }
 
         // GET: Courses/Details/5
@@ -40,7 +39,6 @@ namespace Martin_MIS4200_940.Controllers
         // GET: Courses/Create
         public ActionResult Create()
         {
-            ViewBag.studentID = new SelectList(db.Students, "studentID", "lastName");
             return View();
         }
 
@@ -49,7 +47,7 @@ namespace Martin_MIS4200_940.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "courseID,courseName,courseDescription,courseDateTime,studentID")] Course course)
+        public ActionResult Create([Bind(Include = "courseID,courseName,courseDescription,courseDateTime")] Course course)
         {
             if (ModelState.IsValid)
             {
@@ -58,7 +56,6 @@ namespace Martin_MIS4200_940.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.studentID = new SelectList(db.Students, "studentID", "lastName", course.studentID);
             return View(course);
         }
 
@@ -74,7 +71,6 @@ namespace Martin_MIS4200_940.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.studentID = new SelectList(db.Students, "studentID", "lastName", course.studentID);
             return View(course);
         }
 
@@ -83,7 +79,7 @@ namespace Martin_MIS4200_940.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "courseID,courseName,courseDescription,courseDateTime,studentID")] Course course)
+        public ActionResult Edit([Bind(Include = "courseID,courseName,courseDescription,courseDateTime")] Course course)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +87,6 @@ namespace Martin_MIS4200_940.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.studentID = new SelectList(db.Students, "studentID", "lastName", course.studentID);
             return View(course);
         }
 

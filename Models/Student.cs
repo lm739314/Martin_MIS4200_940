@@ -44,9 +44,10 @@ namespace Martin_MIS4200_940.Models
 
             //a pet can have many appointments, a doc can have many appointments, a pet can have one doc
 
+        [Display (Name = "Student Full Name")]
         public string fullName { get
             {
-                return lastName + ", " + firstName;
+                return firstName + " " + lastName;
             }
         }
         //we dont have any need to see the pet ID, we wont recognigze it. we would like to see the name
