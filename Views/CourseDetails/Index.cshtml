@@ -4,12 +4,13 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Course Detail</h2>
+<div class="well"><h2>Course Detail <span class="glyphicon glyphicon-hand-up"></span></h2></div>
+
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table-bordered">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Course.courseName)
@@ -20,20 +21,21 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Course.courseName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.description)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.courseDetailID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.courseDetailID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.courseDetailID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Course.courseName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.courseDetailID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.courseDetailID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.courseDetailID })
+            </td>
+        </tr>
+    }
 
 </table>

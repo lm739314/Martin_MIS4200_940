@@ -4,13 +4,14 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create a Student Grade</h2>
+<div class="well"><h2>Create a Student Grade <span class="glyphicon glyphicon-star"></span></h2></div>
 
 
-@using (Html.BeginForm()) 
+
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Grade</h4>
         <hr />
